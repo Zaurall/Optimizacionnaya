@@ -1,16 +1,8 @@
 import numpy as np
 
 # Function that reads a vector of coefficients.
-def read_vector(length):
-    # Create an array in which we will store all the values.
-    vector = []
-    
-    # Read the values.
-    for i in range(length):
-        vector.append(int(input()))
-    
-    # Transform array into vector.
-    return np.array(vector)
+def read_vector():
+    return np.array([int(x) for x in input().split(' ')])
 
 # Function that transforms a few vectors into a single matrix.
 def create_main_matrix(z_row, vectors, sol_vector):
@@ -86,7 +78,7 @@ def create_constraint_matrix(length):
     
     # Add vectrots to the list:
     for i in range(length):
-        constr_vec.append(read_vector(length))
+        constr_vec.append(read_vector())
     
     # Add basic coefficients to the list.
     constr_vec = add_basic_coef(constr_vec)
@@ -95,9 +87,14 @@ def create_constraint_matrix(length):
     return constr_vec
 
 # Area for testing.
-C = read_vector(3)
+print('Enter the \'z\'-row:')
+C = read_vector()
+
+print('Enter the constraint matrix without the solution-vector:')
 constr_matr = create_constraint_matrix(3)
-sol_vec = read_vector(3)
+
+print('Enter the solution-vector:')
+sol_vec = read_vector()
 matrix = create_main_matrix(C, constr_matr, sol_vec)
 
 print(matrix)
