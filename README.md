@@ -28,7 +28,7 @@ The output includes either:
 - The string "The method is not applicable!"
 or
 - A vector of decision variables x<sup>*</sup>.
-- The maximum (minimum) value of the objective function.
+- The maximum value of the objective function.
 
 ## Badges
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
