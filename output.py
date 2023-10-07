@@ -10,8 +10,15 @@ def main():
     constr_matr = input_simplex.create_constraint_matrix(3)
     print('Please, enter the solution vector:')
     sol_vec = input_simplex.read_vector()
+    print('Please, enter the accuracy:')
+    accuracy = float(input())
 
     matrix = input_simplex.create_main_matrix(c, constr_matr, sol_vec)
+    epsilon = 0
+
+    while accuracy < 1:
+        accuracy *= 10
+        epsilon += 1
 
     # Check for all cases when the method is not applicable.
 
@@ -54,7 +61,7 @@ def main():
                 print(i, matrix[j][-1])
         if flag:
             print(i, 0)
-    print("Optimal Value:", matrix[0][-1])
+    print("Optimal Value:", math.floor(matrix[0][-1] * 10 ** epsilon) / 10 ** epsilon)
 
 
 if __name__ == "__main__":
