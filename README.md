@@ -3,35 +3,31 @@
 ## Project Description
 Optimizacionnaya is a computer program designed to solve a system of linear programming using the iterative Simplex method. The program focuses on solving maximization problems.
 
-## Problem Statement
+## Example of problem
+
 > The project aims to maximize the objective function:
-> $$ F(x_1, x_2, x_3) = 9x_1 + 10x_2 + 16x_3 $$
+> F(x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>) = 9x<sub>1</sub> + 10x<sub>2</sub> + 16x<sub>3</sub>
 > subject to the following constraints:
-> 1. $$ 18x_1 + 15x_2 + 12x_3 \leq 360 <= 4 (Constraint 1) $$
-> 2. $$ 6x_1 + 4x_2 + 8x_3 \leq 192 (Constraint 2) $$
-> 3. $$ 5x_1 + 3x_2 + 3x_3 \leq 180 (Constraint 3) $$
-> 4. $$ x_1 \leq 0 (Constraint 4) $$
-> 5. $$ x_2 \leq 0 (Constraint 5) $$
-> 6. $$ x_3 \leq 0 (Constraint 6) $$
-> The fitted degree of a polynomal can be and must be assigned by the user in the window when the program is running. For example,
-> When $degree=2$, $$y = a_0+a_1x+a_2x^2$$
-> When $degree=3$, $$y = a_0+a_1x+a_2x^2+a_3x^3$$
-> When $degree=4$, $$y = a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$$
-> Be attention that the assigned term cannot be bigger than the amount ot data you give.
+> 1. 18x<sub>1</sub> + 15x<sub>2</sub> + 12x<sub>3</sub> ⩽ 360 (Constraint 1)
+> 2. 6x<sub>1</sub> + 4x<sub>2</sub> + 8x<sub>3</sub> ⩽ 192 (Constraint 2)
+> 3. 5x<sub>1</sub> + 3x<sub>2</sub> + 3x<sub>3</sub> ⩽ 180 (Constraint 3)
+> 4. x<sub>1</sub> ⩾ 0 (Constraint 4)
+> 5. x<sub>2</sub> ⩾ 0 (Constraint 5)
+> 6. x<sub>3</sub> ⩾ 0 (Constraint 6)
 
 
 ## Input Format
 The input comprises:
-- A vector of coefficients of the objective function (\(C\)).
-- A matrix of coefficients of constraint functions (\(A\)).
-- A vector of right-hand side numbers (\(b\)).
+- A vector of coefficients of the objective function C.
+- A matrix of coefficients of constraint functions A.
+- A vector of right-hand side numbers b.
 - The desired approximation accuracy.
 
 ## Output Format
 The output includes either:
 - The string "The method is not applicable!"
 or
-- A vector of decision variables (\(x^*\)).
+- A vector of decision variables x<sup>*</sup>.
 - The maximum (minimum) value of the objective function.
 
 ## Badges
@@ -45,5 +41,3 @@ To use Optimizacionnaya for solving linear programming problems:
 3. Run the program with the necessary input parameters.
 4. Review the output for the solution.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
