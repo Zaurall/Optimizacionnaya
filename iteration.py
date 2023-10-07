@@ -18,7 +18,7 @@ def get_pivot_index(matrix: np.array):
 # Returns the index of row(variable) to replace
 def row_index_for_replace(matrix: np.array, pivot_idx):
     dimensions = np.shape(matrix)
-    minimum_positive = 1000000000000000
+    minimum_positive = float("inf")
     idx_for_replacement = 0
     for i in range(1, dimensions[0]):
         if matrix[i][pivot_idx] != 0:
