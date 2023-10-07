@@ -4,15 +4,16 @@
 Optimizacionnaya is a computer program designed to solve a system of linear programming using the iterative Simplex method. The program focuses on solving maximization problems.
 
 ## Problem Statement
-The project aims to maximize the objective function:
-\[ F(x_1, x_2, x_3) = 9x_1 + 10x_2 + 16x_3 \]
-subject to the following constraints:
-1. \(18x_1 + 15x_2 + 12x_3 \leq 360\) (Constraint 1)
-2. \(6x_1 + 4x_2 + 8x_3 \leq 192\) (Constraint 2)
-3. \(5x_1 + 3x_2 + 3x_3 \leq 180\) (Constraint 3)
-4. \(x_1 \leq 0\) (Constraint 4)
-5. \(x_2 \leq 0\) (Constraint 5)
-6. \(x_3 \leq 0\) (Constraint 6)
+> The project aims to maximize the objective function:
+> $$ F(x_1, x_2, x_3) = 9x_1 + 10x_2 + 16x_3 $$
+> subject to the following constraints:
+> 1. $$ 18x_1 + 15x_2 + 12x_3 \leq 360 <= 4 (Constraint 1) $$
+> 2. $$ 6x_1 + 4x_2 + 8x_3 \leq 192 (Constraint 2) $$
+> 3. $$ 5x_1 + 3x_2 + 3x_3 \leq 180 (Constraint 3) $$
+> 4. $$ x_1 \leq 0 (Constraint 4) $$
+> 5. $$ x_2 \leq 0 (Constraint 5) $$
+> 6. $$ x_3 \leq 0 (Constraint 6) $$
+
 
 ## Input Format
 The input comprises:
