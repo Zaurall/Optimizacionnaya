@@ -13,6 +13,11 @@ Optimizacionnaya is a computer program designed to solve a system of linear prog
 > 4. $$ x_1 \leq 0 (Constraint 4) $$
 > 5. $$ x_2 \leq 0 (Constraint 5) $$
 > 6. $$ x_3 \leq 0 (Constraint 6) $$
+> The fitted degree of a polynomal can be and must be assigned by the user in the window when the program is running. For example,
+> When $degree=2$, $$y = a_0+a_1x+a_2x^2$$
+> When $degree=3$, $$y = a_0+a_1x+a_2x^2+a_3x^3$$
+> When $degree=4$, $$y = a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$$
+> Be attention that the assigned term cannot be bigger than the amount ot data you give.
 
 
 ## Input Format
