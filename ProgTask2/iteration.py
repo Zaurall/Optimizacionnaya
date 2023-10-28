@@ -1,67 +1,72 @@
+# Import necessary libraries and modules
 import numpy as np
 from numpy import linalg
 from input import C, A, b, epsilon, alpha_1, alpha_2
 from trial import make_trial
 
 
-
-
-x = make_trial(A, b)
-x_old = np.asarray(x)
-while True:
-    print("Iteration:")
-    print("x_old:", x_old)
-    matrix = np.zeros((x_old.size, x_old.size))
-
-    D = np.diag(x_old) + matrix
-    I = np.identity(x_old.size)
-    alpha = alpha_1
-
-    #print("A:", A)
-
-    D_1 = linalg.inv(D)
-    A1 = np.dot(A, D)  # tilda
-    c_tilda = np.dot(D, C)
-    #print("D_1:", D_1)
-    '''print("A_tilda:", A1)
-    print("c_tilda:", c_tilda)
-    '''
+# Function to perform one iteration of the interior point algorithm
+def count_iteration(D, I, alpha):
+    # Calculate values required for the iteration
+    # Calculating matrix A-tilda
+    A1 = np.dot(A, D)
+    # Calculating vector c-tilda
+    c1 = np.dot(D, C)
+    # Calculating matrix A-tilda-transpose
     A1_t = A1.transpose()
-    #print("A1_t:", A1_t)
-    A1A1_t = np.dot(A1, A1_t)
-    #print("A1A1_t:", A1A1_t)
-
-    num_row, num_col = A1A1_t.shape
-    if num_row == 1:
-        A1A1_t_1 = 1 / A1A1_t
-    elif num_row != 1 and linalg.det(A1A1_t) == 0:
+    # Calculating matrix A-tilda * A-tilda-transpose
+    A1_A1_t = np.dot(A1, A1_t)
+    # Check if the matrix is invertible
+    num_rows, num_cols = A1_A1_t.shape
+    if num_rows == 1:
+        # Calculating inverse of number (A-tilda * A-tilda-transpose)
+        A1_A1_t_inverse = 1 / A1_A1_t
+    elif num_rows != 1 and linalg.det(A1_A1_t) == 0:
         print("Solution doesn't exist")
         exit(0)
     else:
-        A1A1_t_1 = linalg.inv(A1A1_t)
-    #print("Inverse: ", A1A1_t_1)
+        # Calculating inverse matrix (A-tilda * A-tilda-transpose)
+        A1_A1_t_inverse = linalg.inv(A1_A1_t)
 
-    A2 = np.dot(A1_t, A1A1_t_1)
-    A_full = np.dot(A2, A1)
-    P = I - A_full
-    cp = np.dot(P, c_tilda)
-
-    #print("P:", P)
-    #print("cp:", cp)
-
+    # Calculate projection matrix P and update x value
+    P = I - np.dot(np.dot(A1_t, A1_A1_t_inverse), A1)
+    # Calculating projected gradient
+    cp = np.dot(P, c1)
+    # Define v as the absolute value of the negative component of cp having the largest absolute value
     v = abs(min(i for i in cp))
-
-    #print("v:", v)
-
+    # Create a vector of ones
     ones = np.ones(x_old.size)
-    #print("ones:", ones)
-    temp = (alpha / v) * cp
-    #print("temp:", temp)
-    x_tilda = np.add(ones, temp)
-
+    # Calculating vector x-tilda
+    x_tilda = np.add(ones, (alpha / v) * cp)
+    # Calculating new x value
     x_new = np.dot(D, x_tilda)
-    print("x_new:", x_new)
-    if linalg.norm(np.subtract(x_new, x_old),ord = 2) < epsilon:
+    return x_new
+
+# Generate an initial trial solution
+x = make_trial(A, b)
+x_old = np.asarray(x)
+index_of_iteration = 1
+
+# Iterate until convergence
+while True:
+    print("Iteration:", index_of_iteration)
+    index_of_iteration += 1
+
+    # Set up matrices D and I for the current iteration
+    zero_matrix = np.zeros((x_old.size, x_old.size))
+    D = np.diag(x_old) + zero_matrix
+    I = np.identity(x_old.size)
+
+    # Perform iterations using different alpha values
+    x_new_alpha1 = count_iteration(D, I, alpha_1)
+    x_new_alpha2 = count_iteration(D, I, alpha_2)
+
+    # Print the results for each alpha value
+    print("X value, using alpha = 0.5: ", x_new_alpha1)
+    print("X value, using alpha = 0.9: ", x_new_alpha2)
+
+    # Check for convergence
+    if linalg.norm(np.subtract(x_new_alpha1, x_old), ord=2) < epsilon:
         break
     else:
-        x_old = x_new
+        x_old = x_new_alpha1
