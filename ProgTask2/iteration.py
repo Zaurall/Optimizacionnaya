@@ -70,3 +70,7 @@ while True:
         break
     else:
         x_old = x_new_alpha1
+
+# Calculating maximum value of z
+z = np.dot(x_old, C)
+print("Maximum value of z: ", z)
