@@ -4,7 +4,7 @@ import numpy as np
 # The idea of setting trial solution is to set all x's firstly to 1 and find compatible slacks variables.
 # If one or several slacks are zero all x's would be 0.1, in next 0.01 and so on until all vars would be >=0
 # matrix - constraint matrix, b - solution vector, previous - previous unsuccessful solution
-def make_trial(matrix: np.array, b: np.array, previous=None):
+def make_trial(matrix: np.ndarray, b: np.ndarray, previous=None):
     if previous is None:
         previous = []
     x = []
