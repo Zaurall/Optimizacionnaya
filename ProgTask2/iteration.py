@@ -47,13 +47,11 @@ def count_iteration(D, I, alpha):
 # case 1
 for i in b:
     if i < 0:
-        print("The method is not applicable!1")
+        print("The method is not applicable!")
         exit(0)
 
 # case 2
-if all([x for x in C]) <= 0:
-    print("The method is not applicable!")
-    exit(0)
+
 is_already_optimized = True
 for x in C:
     if(x > 0):
