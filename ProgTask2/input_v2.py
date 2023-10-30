@@ -44,9 +44,3 @@ def input_linear_program():
 
 # Example usage:
 C, A, b, epsilon, alpha_1, alpha_2 = input_linear_program()
-print("C:", C)
-print("A:", A)
-print("b:", b)
-print("ε:", epsilon)
-print("Initial value of α:", alpha_1)
-print("Second value of α:", alpha_2)
