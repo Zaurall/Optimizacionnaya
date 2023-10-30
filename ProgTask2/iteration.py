@@ -49,8 +49,6 @@ index_of_iteration = 1
 
 # Iterate until convergence
 while True:
-    print("Iteration:", index_of_iteration)
-    index_of_iteration += 1
 
     # Set up matrices D and I for the current iteration
     zero_matrix = np.zeros((x_old.size, x_old.size))
@@ -61,9 +59,6 @@ while True:
     x_new_alpha1 = count_iteration(D, I, alpha_1)
     x_new_alpha2 = count_iteration(D, I, alpha_2)
 
-    # Print the results for each alpha value
-    print("X value, using alpha = 0.5: ", x_new_alpha1)
-    print("X value, using alpha = 0.9: ", x_new_alpha2)
 
     # Check for convergence
     if linalg.norm(np.subtract(x_new_alpha1, x_old), ord=2) < epsilon:
@@ -74,3 +69,6 @@ while True:
 # Calculating maximum value of z
 z = np.dot(x_old, C)
 print("Maximum value of z: ", z)
+
+print("A vector of decision variables - X*, using alpha = 0.5: ", x_new_alpha1)
+print("A vector of decision variables - X*,, using alpha = 0.9: ", x_new_alpha2)
