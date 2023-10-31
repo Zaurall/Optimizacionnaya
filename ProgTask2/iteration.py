@@ -1,7 +1,7 @@
 # Import necessary libraries and modules
 import numpy as np
 from numpy import linalg
-from input_v2 import C, A, b, epsilon, alpha_1, alpha_2
+from input_v2 import C, A, b, epsilon, alpha_1, alpha_2, number_var
 from trial import make_trial
 
 
@@ -94,5 +94,5 @@ while True:
 z = np.dot(x_old, C)
 print("Maximum value of z: ", z)
 
-print("A vector of decision variables - X*, using alpha = 0.5: ", x_new_alpha1)
-print("A vector of decision variables - X*,, using alpha = 0.9: ", x_new_alpha2)
+print("A vector of decision variables - X*, using alpha = 0.5: ", x_new_alpha1[:number_var])
+print("A vector of decision variables - X*, using alpha = 0.9: ", x_new_alpha2[:number_var])
