@@ -1,1 +1,0 @@
-x_old = np.asarray(x)
