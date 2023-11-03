@@ -71,7 +71,7 @@ def main():
     # Print the solution
     print("Maximum value of z if alpha = 0.5: ", z_alpha1)
     print("A vector of decision variables - X*, using alpha = 0.5: ", x_new_alpha1[:number_of_var])
-    print("Maximum value of z if alpha = 0.5: ", z_alpha2)
+    print("Maximum value of z if alpha = 0.9: ", z_alpha2)
     print("A vector of decision variables - X*, using alpha = 0.9: ", x_new_alpha2[:number_of_var])
 
 if __name__ == "__main__":
