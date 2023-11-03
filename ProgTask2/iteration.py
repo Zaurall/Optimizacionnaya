@@ -1,12 +1,10 @@
 # Import necessary libraries and modules
 import numpy as np
 from numpy import linalg
-from input import C, A, b, epsilon, alpha_1, alpha_2
-from trial import make_trial
-
+from input_v2 import C, A
 
 # Function to perform one iteration of the interior point algorithm
-def count_iteration(D, I, alpha):
+def count_iteration(D, I, alpha, x_old):
     # Calculate values required for the iteration
     # Calculating matrix A-tilda
     A1 = np.dot(A, D)
@@ -41,36 +39,3 @@ def count_iteration(D, I, alpha):
     # Calculating new x value
     x_new = np.dot(D, x_tilda)
     return x_new
-
-# Generate an initial trial solution
-x = make_trial(A, b)
-x_old = np.asarray(x)
-index_of_iteration = 1
-
-# Iterate until convergence
-while True:
-
-    # Set up matrices D and I for the current iteration
-    zero_matrix = np.zeros((x_old.size, x_old.size))
-    D = np.diag(x_old) + zero_matrix
-    I = np.identity(x_old.size)
-
-    # Perform iterations using different alpha values
-    x_new_alpha1 = count_iteration(D, I, alpha_1)
-    x_new_alpha2 = count_iteration(D, I, alpha_2)
-
-
-    # Check for convergence
-    if linalg.norm(np.subtract(x_new_alpha1, x_old), ord=2) < epsilon:
-        break
-    else:
-        x_old = x_new_alpha1
-
-# Calculating maximum value of z
-z_05 = np.dot(x_new_alpha1, C)
-z_09 = np.dot(x_new_alpha2, C)
-print("Maximum value of z, using alpha = 0.5 : ", z_05)
-print("Maximum value of z, using alpha = 0.9 : ", z_09)
-
-print("A vector of decision variables - X*, using alpha = 0.5: ", x_new_alpha1)
-print("A vector of decision variables - X*,, using alpha = 0.9: ", x_new_alpha2)

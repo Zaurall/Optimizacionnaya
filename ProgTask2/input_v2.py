@@ -41,6 +41,7 @@ def input_linear_program():
     alpha_2 = 0.9
 
     return C, A, b, epsilon, alpha_1, alpha_2, n
+    return C, A, b, epsilon, alpha_1, alpha_2, n
 
 # Example usage:
-C, A, b, epsilon, alpha_1, alpha_2, number_var = input_linear_program()
+C, A, b, epsilon, alpha_1, alpha_2, number_of_var = input_linear_program()
