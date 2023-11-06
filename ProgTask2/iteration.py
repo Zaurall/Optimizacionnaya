@@ -20,7 +20,7 @@ def count_iteration(D, I, alpha, x_old):
         # Calculating inverse of number (A-tilda * A-tilda-transpose)
         A1_A1_t_inverse = 1 / A1_A1_t
     elif num_rows != 1 and linalg.det(A1_A1_t) == 0:
-        print("Solution doesn't exist")
+        print("The problem does not have solution!")
         exit(0)
     else:
         # Calculating inverse matrix (A-tilda * A-tilda-transpose)

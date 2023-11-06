@@ -18,10 +18,11 @@ def main():
 
     is_already_optimized = True
     for x in C:
-        if(x > 0):
+        if x > 0:
             is_already_optimized = False
-    if(is_already_optimized == True):
+    if is_already_optimized == True:
         print("The method is not applicable!")
+        exit(0)
 
     x = make_trial(A, b)
     x_old_alpha1 = np.asarray(x)
@@ -44,10 +45,12 @@ def main():
         I_alpha2 = np.identity(x_old_alpha2.size)
 
         # Perform iterations using different alpha values
-        if(is_solved_alpha1 == False):
+        if is_solved_alpha1 == False:
             x_new_alpha1 = iteration_interior_point.count_iteration(D_alpha1, I_alpha1, alpha_1, x_old_alpha1)
-        if(is_solved_alpha2 == False):
+        if is_solved_alpha2 == False:
             x_new_alpha2 = iteration_interior_point.count_iteration(D_alpha2, I_alpha2, alpha_2, x_old_alpha2)
+        if is_solved_alpha1 and is_solved_alpha2:
+            break
 
         # Check for convergence
         if linalg.norm(np.subtract(x_new_alpha1, x_old_alpha1), ord=2) < epsilon:
@@ -60,9 +63,9 @@ def main():
         else:
             x_old_alpha2 = x_new_alpha2
         
-        if(iter_counter >= 10000): # If the number of iterations is tense to infinity, problem have no solution 
-            print("The problem does not have solution!\n")
-            break
+        if iter_counter >= 10000: # If the number of iterations is tense to infinity, problem have no solution
+            print("The problem does not have solution!")
+            exit(0)
         else:
             iter_counter += 1
     # Calculating maximum value of z 
