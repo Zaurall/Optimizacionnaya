@@ -65,7 +65,9 @@ def pick_cell_row(c_temp, row_difference):
     return row_idx, column_idx
 
 
-def vogel(s, c, d):
+def Vogel(s, c, d):
+    print("==================")
+    print("Vogel:")
     s_temp = s.copy()
     d_temp = d.copy()
     c_temp = c.copy()
@@ -92,18 +94,5 @@ def vogel(s, c, d):
         if d_temp[cell[1]] == 0:
             for i in range(c_temp.shape[0]):
                 c_temp[i][cell[1]] = 2 ** 31 - 1
-    return answer
-
-
-def test():
-    import input
-    s, c, d = input.input_linear_program()
-    for i in vogel(s, c, d):
-        print(i)
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    test()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    for i, vector in enumerate(answer):
+        print(i + 1, "vector of initial basic solution:", vector)
