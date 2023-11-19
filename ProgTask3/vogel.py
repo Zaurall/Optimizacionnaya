@@ -1,5 +1,4 @@
 import numpy as np
-import sys
 
 
 def calculate_difference(for_row: bool, c):
@@ -65,7 +64,7 @@ def pick_cell_row(c_temp, row_difference):
     return row_idx, column_idx
 
 
-def Vogel(s, c, d):
+def vogel(s, c, d):
     print("==================")
     print("Vogel:")
     s_temp = s.copy()
@@ -96,3 +95,6 @@ def Vogel(s, c, d):
                 c_temp[i][cell[1]] = 2 ** 31 - 1
     for i, vector in enumerate(answer):
         print(i + 1, "vector of initial basic solution:", vector)
+
+    summ = np.sum(answer * c)
+    print("Total Cost:", summ)

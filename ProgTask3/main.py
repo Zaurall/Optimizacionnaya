@@ -1,29 +1,27 @@
-import math
-import numpy as np
-from numpy import linalg
-from north_west import North_West
-from vogel import Vogel
+from north_west import north_west
+from vogel import vogel
+from russell import russell
 from input import S, C, D
+from tabulate import tabulate
+
+
+def print_input_table(S, C, D):
+    table_data = []
+    for i, row in enumerate(C):
+        table_row = [f"S{i + 1}"] + list(row) + [S[i]]
+        table_data.append(table_row)
+
+    table_data.append(["Demand"] + list(map(str, D)) + ["480"])
+
+    table_headers = [""] + [f"D{j + 1}" for j in range(len(D))] + ["Supply"]
+    print(tabulate(table_data, headers=table_headers, tablefmt="grid"))
 
 
 def main():
-    print("Matrix of coefficients of costs:")
-    print(C)
-    print("Vector of coefficients of supply:")
-    print(S)
-    print("Vector of coefficients of demand:")
-    print(D)
-    S1 = S.copy()
-    C1 = C.copy()
-    D1 = D.copy()
-    North_West(S1, C1, D1)
-    S2 = S.copy()
-    C2 = C.copy()
-    D2 = D.copy()
-    Vogel(S2, C2, D2)
-    S3 = S.copy()
-    C3 = C.copy()
-    D3 = D.copy()
+    print_input_table(S, C, D)
+    north_west(S, C, D)
+    vogel(S, C, D)
+    russell(S, C, D)
 
 
 if __name__ == "__main__":
