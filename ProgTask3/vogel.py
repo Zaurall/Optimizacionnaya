@@ -1,6 +1,7 @@
 import numpy as np
 
 
+# Function for computing the difference between smallest and next smallest element
 def calculate_difference(for_row: bool, c):
     difference = []
     if not for_row:
@@ -32,6 +33,7 @@ def calculate_difference(for_row: bool, c):
     return difference
 
 
+# Function to pick the smallest element in a column
 def pick_cell_column(c_temp, column_difference):
     column_idx = 0
     max_el = 0
@@ -48,6 +50,7 @@ def pick_cell_column(c_temp, column_difference):
     return row_idx, column_idx
 
 
+# Function to pick the smallest element in a row
 def pick_cell_row(c_temp, row_difference):
     row_idx = 0
     max_el = 0
@@ -64,6 +67,7 @@ def pick_cell_row(c_temp, row_difference):
     return row_idx, column_idx
 
 
+# Function that computes feasible solution by Vogel's method. s - source vector, c - price matrix, d - demand vector.
 def vogel(s, c, d):
     print("==================")
     print("Vogel:")
